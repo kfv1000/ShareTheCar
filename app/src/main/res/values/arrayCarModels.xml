@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinnerCarModels">
+        <item>Pick A Car Model</item>
+        <item>Toyota</item>
+        <item>Mg</item>
+        <item>Volkswagen</item>
+        <item>Ford</item>
+        <item>Honda</item>
+        <item>General Motors</item>
+        <item>Nissan</item>
+        <item>BMW</item>
+        <item>Mercedes-Benz</item>
+        <item>Audi</item>
+        <item>Hyundai</item>
+        <item>other</item>
+    </string-array>
+</resources>

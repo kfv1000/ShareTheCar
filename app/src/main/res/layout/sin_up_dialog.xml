@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Username"
+        android:gravity="center"
+        android:id="@+id/etUserName"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etVPasswrod"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Verify Password"
+        android:inputType="textPassword"
+        ></EditText>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/rg">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:text="User Type"></TextView>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parent"
+
+            android:id="@+id/rbParent"></RadioButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kid"
+            android:id="@+id/rbKid"></RadioButton>
+
+    </RadioGroup>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="sign up"
+        android:id="@+id/btnDialogSignUp"></Button>
+
+</LinearLayout>

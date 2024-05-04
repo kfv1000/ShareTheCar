@@ -1,0 +1,409 @@
+@startuml
+class com.example.sharethecarv05.car.Car {
+~ String id
+~ String model
+~ String bluetooth
++ void setModel(String)
++ void setNum(String)
++ String getId()
++ String getModel()
++ String getBluetooth()
++ void setBluetooth(String)
+}
+
+
+class com.example.sharethecarv05.adapter.CarAdapter {
+- Context context
+- View view
+- LayoutInflater layoutInflater
+- TextView carModelView
+- TextView carNumView
+- Car carObj
+- List<Car> carsLst
++ View getView(int,View,ViewGroup)
+}
+
+
+class com.example.sharethecarv05.activity.NewCarActivity {
+~ Button btnCancel
+~ Button btnAddCar
+~ Button btnCarIdImge
+~ Button btnGallery
+~ EditText etCarNum
+~ String carModel
+~ User user
+- {static} int CAMERA_REQUEST_CODE
+- {static} int PERMISSION_REQUEST_CODE
+- TextView textView
+- {static} int REQUEST_CAMERA_COME
+~ int SELECT_PICTURE
+# void onCreate(Bundle)
++ void onClick(View)
++ void onItemSelected(AdapterView<?>,View,int,long)
++ void onNothingSelected(AdapterView<?>)
+- void checkPermissionsAndOpenCamera()
+- void openCamera()
+# void onActivityResult(int,int,Intent)
+~ void imageChooser()
+- Uri getImageUri(Bitmap)
+- void startCropActivity(Uri)
+- void processImage(Uri)
+- void displayTextFromImage(FirebaseVisionText)
+}
+
+
+class com.example.sharethecarv05.activity.EditCarActivity {
+~ SharedPreferences sharedPreferences
+~ Dialog dialog
+~ Button btnSCar
+~ Button btnCancel
+~ User user
+~ ListView listView
+~ CarAdapter carAdapter
+~ Car temp
+~ EditText carModel
+~ Intent intent
+~ TextView carNum
+# void onCreate(Bundle)
++ void createpickerDialog()
++ void onClick(View)
+}
+
+
+class com.example.sharethecarv05.adapter.UserAdapter {
+- Context context
+- View view
+- LayoutInflater layoutInflater
+- TextView userView
+- TextView userTipeView
+- User userObj
+- List<User> usersLst
+- ImageView imgTrash
++ View getView(int,View,ViewGroup)
+}
+
+
+class com.example.sharethecarv05.service.BootCompletedReceiver {
++ void onReceive(Context,Intent)
+}
+
+class com.example.sharethecarv05.user.UserManager {
++ {static} DatabaseReference myPersonRef
++ {static} HashMap<String,User> hsusers
++ {static} String activeUser
++ {static} void setActiveUser(String)
++ {static} Boolean setNewUser(User)
++ {static} HashMap<String,User> GetHashMApOfPersons()
++ {static} HashMap<String,User> GetHashMApOfPersonsFromDB()
++ {static} User getUser(String)
++ {static} void Update(User)
++ {static} ArrayList<User> GetUsers(ArrayList<String>)
+}
+
+
+class com.example.sharethecarv05.activity.CarActivity {
+~ User user
+~ Car car
+~ TextView carModel
+~ TextView carNum
+~ Button btnNewTime
+~ ListView listView
+~ EntryAdapter entryAdapter
+~ Button btnDate
+~ Button startTime
+~ Button endTime
+~ Button btnMap
+~ ImageButton btnBlue
+~ Integer year
+~ Integer month
+~ Integer day
+~ Integer startHour
+~ Integer startMinute
+~ Integer endHour
+~ Integer endMinute
+~ Integer editYear
+~ Integer editMonth
+~ Integer editDay
+~ ArrayList<Entry> entries
+~ String date
+~ Dialog dialog
+~ Button btnDialogSaveChanges
+~ Entry edit
+~ long time
+~ double latitude
+# void onCreate(Bundle)
++ void createEditEntryDialog(Entry)
++ ArrayList<Entry> getDayEntries()
++ void updateListView()
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
++ void onClick(View)
++ void saveDate(Integer,Integer,Integer,String)
+- void saveEditeDate(Integer,Integer,Integer,String)
+- void showDatePicker(View)
+- void showBluetoothDevicesDialog()
+- void checkAndSaveDevice(String)
++ void onMapReady(GoogleMap)
+- void openGoogleMaps()
+}
+
+
+class com.example.sharethecarv05.permission.PermissionManager {
++ {static} ArrayList<CarUser> carUsers
++ {static} DatabaseReference myPermissionRef
++ {static} ArrayList<CarUser> GetHashMApOfPermissionsFromDB()
++ {static} ArrayList<String> GetUserCars(User)
++ {static} void SetNewPermission(String,String)
++ {static} ArrayList<String> GetCarUsersWifawtUser(String,String)
++ {static} ArrayList<String> GetCarUsers(String)
++ {static} Boolean UserHasCarPermission(String,String)
++ {static} void RemovePermission(String,String)
++ {static} void RemovePermission(String)
+}
+
+
+class com.example.sharethecarv05.permission.CarUser {
+~ String userName
+~ String carId
++ String getUserName()
++ void setUserName(String)
++ String getCarId()
++ void setCarId(String)
++ String toString()
+}
+
+
+class com.example.sharethecarv05.activity.MainActivity {
+~ Button btnLogin
+~ Button btnSignUp
+~ Button btnDialogSignUp
+~ String userName
+~ String password
+~ String vPasswrod
+~ EditText etUserName
+~ EditText etPassword
+~ EditText etVPasswrod
+~ EditText etLoginUserName
+~ EditText etLoginPassword
+~ RadioButton rbKid
+~ Dialog dialog
+~ User user
+~ ImageView img
++ DatabaseReference myRef
++ FirebaseDatabase database
++ {static} int MY_PERMISSIONS_REQUEST_BLUETOOTH_CONNECT
+# void onCreate(Bundle)
++ void createSignUpDialog()
++ void onClick(View)
+- void startService()
+}
+
+
+class com.example.sharethecarv05.user.User {
+~ String username
+~ String password
+~ String type
++ Boolean isPassword(String)
++ String getUsername()
++ String getPassword()
++ void setUsername(String)
++ void setPassword(String)
++ String getType()
++ void setType(String)
+}
+
+
+class com.example.sharethecarv05.user.Kid {
+}
+class com.example.sharethecarv05.adapter.EntryAdapter {
+- Context context
+- View view
+- LayoutInflater layoutInflater
+- TextView startTime
+- TextView user
+- LinearLayout menubtn
+- List<Entry> entries
+- ImageView menu
+~ String userName
++ View getView(int,View,ViewGroup)
+}
+
+
+class com.example.sharethecarv05.schedule.ScheduleManager {
+~ {static} ArrayList<Entry> entries
+~ {static} DatabaseReference myScheduleRef
++ {static} ArrayList<Entry> GetHashMApOfEntrysFromDB()
++ {static} Boolean PersonTimeOverLapChecker(String,DateRange)
++ {static} Boolean CarTimeOverLapChecker(String,DateRange)
++ {static} Integer AddEntry(String,String,DateRange)
++ {static} Integer EditEntry(String,String,DateRange,Entry)
++ {static} void DeleteEntry(Entry)
++ {static} ArrayList<Entry> GetDateRangesForCar(String)
++ {static} ArrayList<Entry> GetDateRangesForUser(String)
++ {static} ArrayList<Entry> SortEntryArray(ArrayList<Entry>)
++ {static} void DeleteUsersEntries(String,String)
++ {static} void DeleteCarEntries(Car)
+}
+
+
+class com.example.sharethecarv05.schedule.DateRange {
+~ Date dateStart
+~ Date dateEnd
+~ Integer day
+~ Integer month
+~ Integer year
++ Boolean overlap(DateRange)
++ Date getDateStart()
++ Date getDateEnd()
++ Integer getDay()
++ void setDay(Integer)
++ Integer getMonth()
++ void setMonth(Integer)
++ Integer getYear()
++ void setYear(Integer)
++ Integer getTimeForSort()
++ String StartTimeToString()
++ String EndTimeToString()
++ String DateToString()
+}
+
+
+class com.example.sharethecarv05.service.DBService {
+~ DatabaseReference myRef
+~ FirebaseDatabase database
+~ boolean first
++ IBinder onBind(Intent)
++ int onStartCommand(Intent,int,int)
++ void alert(String,String)
+}
+
+
+class com.example.sharethecarv05.service.BluetoothBackgroundService {
+- BluetoothAdapter bluetoothAdapter
+- String connectedDeviceName
+- boolean isBluetoothConnected
+- TextToSpeech textToSpeech
+- LocationCallback locationCallback
+- FusedLocationProviderClient locationClient
+- Location lastKnownLocation
+- {static} float MIN_DISTANCE_CHANGE_FOR_UPDATES
+- Timer locationSaveTimer
+- LocationRequest locationRequest
+- DatabaseReference databaseReference
+- BroadcastReceiver bluetoothConnectionReceiver
++ IBinder onBind(Intent)
++ int onStartCommand(Intent,int,int)
++ void onDestroy()
+- void stopLocationUpdates()
+- void startLocationUpdates()
+- boolean hasLocationPermissions()
++ void isBTDeviceRegisteredInDB(BluetoothDevice,BluetoothCheckCallback)
+- void startForegroundService()
+- void createLocationRequest()
+- void buildLocationCallback()
++ void SetLocation(Location,String)
+}
+
+
+interface com.example.sharethecarv05.service.BluetoothBackgroundService$BluetoothCheckCallback {
+~ void onResult(boolean)
+}
+
+class com.example.sharethecarv05.activity.CarsActivity {
+~ User user
+~ CarAdapter carAdapter
+~ ListView listView
+~ TextView textviewWelcomeMessage
+# void onCreate(Bundle)
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+}
+
+
+class com.example.sharethecarv05.schedule.Entry {
+~ String userName
+~ String carId
+~ DateRange dateRange
++ String getUserName()
++ void setUserName(String)
++ String getCarId()
++ void setCarId(String)
++ DateRange getDateRange()
++ void setDateRange(DateRange)
+}
+
+
+class com.example.sharethecarv05.car.CarManager {
++ {static} DatabaseReference myCarRef
++ {static} HashMap<String,Car> hscars
++ {static} HashMap<String,Car> GetHashMApOfCarsFromDB()
++ {static} Boolean setNewCar(Car)
++ {static} void UpdateCar(String,String)
++ {static} ArrayList<Car> getCarsArray(ArrayList<String>)
++ {static} void DeleteCar(Car)
++ {static} void SetBluetooth(String,String)
+}
+
+
+class com.example.sharethecarv05.service.Coordinates {
+~ long time
+~ double latitude
+~ double longitude
++ long getTime()
++ void setTime(long)
++ double getLatitude()
++ void setLatitude(double)
++ double getLongitude()
++ void setLongitude(double)
+}
+
+
+class com.example.sharethecarv05.activity.CarPermissionActivity {
+~ ListView listView
+~ Button btnAddUser
+~ Button btnBack
+~ EditText editTextUser
+~ UserAdapter userAdapter
+~ User user
+~ Car car
+~ String u
+~ TextView title
+# void onCreate(Bundle)
++ void refresListView()
++ void onClick(View)
+}
+
+
+class com.example.sharethecarv05.user.Parent {
++ Boolean CreateCar(String,String)
+}
+
+
+
+java.io.Serializable <|.. com.example.sharethecarv05.car.Car
+android.widget.ArrayAdapter <|-- com.example.sharethecarv05.adapter.CarAdapter
+com.example.sharethecarv05.activity.OnClickListener <|.. com.example.sharethecarv05.activity.NewCarActivity
+com.example.sharethecarv05.activity.OnItemSelectedListener <|.. com.example.sharethecarv05.activity.NewCarActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.sharethecarv05.activity.NewCarActivity
+com.example.sharethecarv05.activity.OnClickListener <|.. com.example.sharethecarv05.activity.EditCarActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.sharethecarv05.activity.EditCarActivity
+android.widget.ArrayAdapter <|-- com.example.sharethecarv05.adapter.UserAdapter
+android.content.BroadcastReceiver <|-- com.example.sharethecarv05.service.BootCompletedReceiver
+com.example.sharethecarv05.activity.OnClickListener <|.. com.example.sharethecarv05.activity.CarActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.sharethecarv05.activity.CarActivity
+com.example.sharethecarv05.activity.OnClickListener <|.. com.example.sharethecarv05.activity.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.sharethecarv05.activity.MainActivity
+java.io.Serializable <|.. com.example.sharethecarv05.user.User
+java.io.Serializable <|.. com.example.sharethecarv05.user.Kid
+com.example.sharethecarv05.user.User <|-- com.example.sharethecarv05.user.Kid
+android.widget.ArrayAdapter <|-- com.example.sharethecarv05.adapter.EntryAdapter
+java.io.Serializable <|.. com.example.sharethecarv05.schedule.DateRange
+android.app.Service <|-- com.example.sharethecarv05.service.DBService
+android.app.Service <|-- com.example.sharethecarv05.service.BluetoothBackgroundService
+com.example.sharethecarv05.service.BluetoothBackgroundService +.. com.example.sharethecarv05.service.BluetoothBackgroundService$BluetoothCheckCallback
+androidx.appcompat.app.AppCompatActivity <|-- com.example.sharethecarv05.activity.CarsActivity
+com.example.sharethecarv05.activity.OnClickListener <|.. com.example.sharethecarv05.activity.CarPermissionActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.sharethecarv05.activity.CarPermissionActivity
+java.io.Serializable <|.. com.example.sharethecarv05.user.Parent
+com.example.sharethecarv05.user.User <|-- com.example.sharethecarv05.user.Parent
+@enduml

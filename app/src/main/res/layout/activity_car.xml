@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CarActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+       >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/sharethecar"
+            android:id="@+id/img"></ImageView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="car number"
+        android:textSize="40dp"
+        android:id="@+id/tvCarNum"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="car model"
+        android:textSize="20dp"
+        android:id="@+id/tvCarModel"></TextView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="date"
+        android:id="@+id/btnDate"></Button>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The car is not booked for this date\nto book a time click the choose buttons below"
+        android:gravity="center"
+        android:visibility="gone"
+        android:id="@+id/mt"></TextView>
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="360dp"
+        android:layout_height="350dp"
+        android:layout_margin="15dp">
+    </ListView>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:text="Choose start time"
+            android:id="@+id/btnSTime"></Button>
+        <Button
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:text="Choose end time"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/btnETime"></Button>
+    </LinearLayout>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Save new entry"
+        android:id="@+id/btnNewTime"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"></Button>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnMap"
+            android:text="Map"></Button>
+
+        <ImageButton
+            android:id="@+id/btnBlue"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:src="@android:drawable/stat_sys_data_bluetooth"
+            android:backgroundTint="@color/black"/>
+    </LinearLayout>
+
+</LinearLayout>

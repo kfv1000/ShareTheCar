@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity"
+    tools:visibility="visible"
+    >
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@drawable/sharethecar"
+        android:id="@+id/img"></ImageView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to ShareTheCar"
+            android:textSize="20dp"
+            app:cornerRadius="20dp" />
+
+        <EditText
+            android:id="@+id/etUserName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+
+            android:inputType="text|textNoSuggestions"
+            android:text="" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#000000"/>
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="Sign Up"
+            android:textColor="#144ED5" />
+    </LinearLayout>
+
+</LinearLayout>

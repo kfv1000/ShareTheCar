@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/permission"
+        android:title="Car permissions"></item>
+    <item
+        android:id="@+id/unlinkCar"
+        android:title="Unlink car"></item>
+    <item
+        android:id="@+id/deleteCar"
+        android:title="Delete car"></item>
+    <item
+        android:id="@+id/back"
+        android:title="Back"></item>
+</menu>

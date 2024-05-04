@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/editEntry"
+        android:title="Edit time"></item>
+    <item
+        android:id="@+id/deleteEnty"
+        android:title="Delete Time"></item>
+</menu>
